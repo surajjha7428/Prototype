@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    function Vehical(brand,model,speed,fuelType){
+        this.Brand = brand;
+        this.Model = model;
+        this.Speed = speed;
+        this.FuelType = fuelType;
+    };
+
+    Vehical.prototype.accelerate = function(increase){
+        this.Speed += increase;
+        console.log("Vehical Speed is", this.Speed)
+    };
+    Vehical.prototype.break = function(decrease){
+        this.Speed -= decrease;
+        console.log("apply brakes");
+    };
+    Vehical.prototype.refuel = function(){
+        console.log("Refulling the Vehical");
+    };
+
+    //------------------ Function.. Of Car---------------//
+    function Car (brand,model,speed,fuelType,noOfwheels){-
+        Vehical.call(this,brand,model,speed,fuelType);
+        this.NoofWheeIs=noOfwheels;
+    }
+    Object.setPrototypeOf(Car.prototype,Vehical.prototype)
+    Car.prototype.honk=function(){
+        console.log("Honk.. Honk..")
+    };
+
+     //------------------ Function.. Of Airplane---------------//
+    function Airplane(brand,model,speed,fuelType,noOfwheels,numberOfEngines,hasLandingGear){
+        Vehical.call(this,brand,model,speed,fuelType);
+        this,Noofwheels=noOfwheels;
+        this.NumberOfEngines=numberOfEngines;
+        this.HasLandingGear=hasLandingGear;
+    };
+
+    Object.setPrototypeOf(Airplane.prototype,Vehical.prototype);
+    Airplane.prototype.takeoff=function(){
+        console.log(this.Brand, "is taking off")
+    }
+
+     //------------------ Info.. Of Car---------------//
+    let Car1 = new Car ("FORD",2023,0,"Disel",4)
+    console.log(Car1)
+    Car1.accelerate(45);
+    Car1.break(10);
+    Car1.refuel();
+    Car1.honk();
+
+ 
+    //------------------ Info.. Of Airplane---------------//
+
+    let Air1=new Airplane("AirIndia",2023,0, "Jet Fuel",10,4,true)
+    console.log(Air1);
+    Air1.accelerate(200);
+    Air1.break(50);
+    Air1.refuel();
+    Air1.takeoff();
+
+</script>
+</html>
+
